@@ -36,4 +36,10 @@ public class Profesor extends Persona {
     public void setSalarioHora(double salarioHora) { this.salarioHora = salarioHora; }
     public void setHorasMes(int horasMes) { this.horasMes = horasMes; }
     
+ public double calcularSalario() {
+        double base = salarioHora * horasMes;
+        return base + base * 0.30;
+    }
+
+
 }
