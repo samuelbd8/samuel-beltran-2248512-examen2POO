@@ -36,10 +36,25 @@ public class Profesor extends Persona {
     public void setSalarioHora(double salarioHora) { this.salarioHora = salarioHora; }
     public void setHorasMes(int horasMes) { this.horasMes = horasMes; }
     
- public double calcularSalario() {
+ @Override
+    public String toString() {
+        return getNombre() + " - " + area + " - Salario: $" + String.format("%.2f", calcularSalario());
+    }
+    
+    public double calcularSalario() {
         double base = salarioHora * horasMes;
         return base + base * 0.30;
     }
+    public double calcularSalario(int horasExtras) {
+        double base = salarioHora * (horasMes + horasExtras);
+        return base + base * 0.30;
+    }
+    public double calcularSalario(int horasExtras, double bono) {
+        return calcularSalario(horasExtras) + bono;
+    }
 
-
+    
 }
+
+
+
