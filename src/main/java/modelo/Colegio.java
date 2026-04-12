@@ -44,4 +44,12 @@ public ArrayList<Profesor> listarProfesoresOrdenados() {
             }
         }
         return profesores;
-}}
+}
+public double calcularTotalPrestaciones() {
+        double total = 0;
+        for (Profesor p : profesores) {
+            total += p.calcularPrestaciones();
+        }
+        return total;
+    }
+}
