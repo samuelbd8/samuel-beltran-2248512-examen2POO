@@ -52,7 +52,9 @@ public class Profesor extends Persona {
     public double calcularSalario(int horasExtras, double bono) {
         return calcularSalario(horasExtras) + bono;
     }
-
+public double calcularPrestaciones() {
+        return calcularSalario() * 0.19;
+    }
     
 }
 
