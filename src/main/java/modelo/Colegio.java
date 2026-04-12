@@ -8,6 +8,27 @@ package modelo;
  *
  * @author samue
  */
+import java.util.ArrayList;
+
 public class Colegio {
-    
+
+    private ArrayList<Profesor> profesores;
+    private ArrayList<Estudiante> estudiantes;
+
+    public Colegio() {
+        profesores = new ArrayList<>();
+        estudiantes = new ArrayList<>();
+    }
+
+    public void agregarProfesor(Profesor p) {
+        profesores.add(p);
+    }
+
+    public void agregarEstudiante(Estudiante e) {
+        estudiantes.add(e);
+    }
+
+    public ArrayList<Estudiante> listarEstudiantes() {
+        return estudiantes;
+    }
 }
