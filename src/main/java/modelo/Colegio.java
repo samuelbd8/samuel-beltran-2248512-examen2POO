@@ -31,4 +31,17 @@ public class Colegio {
     public ArrayList<Estudiante> listarEstudiantes() {
         return estudiantes;
     }
-}
+
+
+public ArrayList<Profesor> listarProfesoresOrdenados() {
+        for (int i = 0; i < profesores.size() - 1; i++) {
+            for (int j = 0; j < profesores.size() - 1; j++) {
+                if (profesores.get(j).calcularSalario() < profesores.get(j + 1).calcularSalario()) {
+                    Profesor temp = profesores.get(j);
+                    profesores.set(j, profesores.get(j + 1));
+                    profesores.set(j + 1, temp);
+                }
+            }
+        }
+        return profesores;
+}}
