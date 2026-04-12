@@ -549,7 +549,30 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarEstudianteActionPerformed
 
     private void btnListarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEstudiantesActionPerformed
-        // TODO add your handling code here:
+        try {
+        controlador.registrarEstudiante(
+                txtNombreEstudiante.getText(),
+                txtDireccionEstudiante.getText(),
+                txtTelefonoEstudiante.getText(),
+                txtFechaEstudiante.getText(),
+                txtCodigo.getText(),
+                txtGrado.getText(),
+                Double.parseDouble(txtPromedio.getText())
+        );
+
+        txtAreaResultados.append("Estudiante registrado correctamente.\n");
+
+        txtNombreEstudiante.setText("");
+        txtDireccionEstudiante.setText("");
+        txtTelefonoEstudiante.setText("");
+        txtFechaEstudiante.setText("");
+        txtCodigo.setText("");
+        txtGrado.setText("");
+        txtPromedio.setText("");
+
+    } catch (NumberFormatException e) {
+        txtAreaResultados.append("Error: el promedio debe ser un numero valido.\n");
+    }
     }//GEN-LAST:event_btnListarEstudiantesActionPerformed
 
     private void btnListarProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProfesoresActionPerformed
