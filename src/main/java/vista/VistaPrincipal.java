@@ -3,18 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-
+import controlador.Controlador;
 /**
  *
  * @author samue
  */
 public class VistaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VistaPrincipal
-     */
+    private Controlador controlador;
     public VistaPrincipal() {
         initComponents();
+        controlador = new Controlador();
     }
 
     /**
@@ -68,7 +67,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnTotalPrestaciones = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAreaResultados = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -426,9 +425,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("REPORTES", jPanel3);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAreaResultados.setColumns(20);
+        txtAreaResultados.setRows(5);
+        jScrollPane1.setViewportView(txtAreaResultados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -475,7 +474,34 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDireccionEstudianteActionPerformed
 
     private void btnRegistrarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProfesorActionPerformed
-        // TODO add your handling code here:
+        try {
+        controlador.registrarProfesor(
+                txtNombreProfesor.getText(),
+                txtDireccionProfesor.getText(),
+                txtTelefonoProfesor.getText(),
+                txtFechaProfesor.getText(),
+                txtCedula.getText(),
+                txtArea.getText(),
+                Double.parseDouble(txtSalarioHora.getText()),
+                Integer.parseInt(txtHorasMes.getText())
+        );
+
+        txtAreaResultados.append("Profesor registrado correctamente.\n");
+
+        
+        txtNombreProfesor.setText("");
+        txtDireccionProfesor.setText("");
+        txtTelefonoProfesor.setText("");
+        txtFechaProfesor.setText("");
+        txtCedula.setText("");
+        txtArea.setText("");
+        txtSalarioHora.setText("");
+        txtHorasMes.setText("");
+
+    } catch (NumberFormatException e) {
+        txtAreaResultados.append("Error: salario y horas deben ser numeros validos.\n");
+    }
+
     }//GEN-LAST:event_btnRegistrarProfesorActionPerformed
 
     private void txtNombreProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProfesorActionPerformed
@@ -597,8 +623,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtArea;
+    private javax.swing.JTextArea txtAreaResultados;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDireccionEstudiante;
