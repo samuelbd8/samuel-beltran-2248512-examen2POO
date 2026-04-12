@@ -4,6 +4,7 @@
  */
 package vista;
 import controlador.Controlador;
+import modelo.*;
 /**
  *
  * @author samue
@@ -11,9 +12,11 @@ import controlador.Controlador;
 public class VistaPrincipal extends javax.swing.JFrame {
 
     private Controlador controlador;
+    
     public VistaPrincipal() {
         initComponents();
         controlador = new Controlador();
+
     }
 
     /**
@@ -545,10 +548,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGradoActionPerformed
 
     private void btnRegistrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEstudianteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarEstudianteActionPerformed
-
-    private void btnListarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEstudiantesActionPerformed
         try {
         controlador.registrarEstudiante(
                 txtNombreEstudiante.getText(),
@@ -572,6 +571,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     } catch (NumberFormatException e) {
         txtAreaResultados.append("Error: el promedio debe ser un numero valido.\n");
+    }
+    }//GEN-LAST:event_btnRegistrarEstudianteActionPerformed
+
+    private void btnListarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEstudiantesActionPerformed
+        txtAreaResultados.setText("=== LISTA DE ESTUDIANTES ===\n");
+
+    for (Estudiante e : controlador.obtenerEstudiantes()) {
+        txtAreaResultados.append(e.toString() + "\n");
     }
     }//GEN-LAST:event_btnListarEstudiantesActionPerformed
 
