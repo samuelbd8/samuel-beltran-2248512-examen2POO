@@ -591,7 +591,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarProfesoresActionPerformed
 
     private void btnTotalPrestacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTotalPrestacionesActionPerformed
-        // TODO add your handling code here:
+        double total = controlador.obtenerTotalPrestaciones();
+
+    txtAreaResultados.setText(
+        "Total de prestaciones sociales: $" + String.format("%.2f", total)
+    );
     }//GEN-LAST:event_btnTotalPrestacionesActionPerformed
 
     /**
