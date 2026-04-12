@@ -583,7 +583,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarEstudiantesActionPerformed
 
     private void btnListarProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProfesoresActionPerformed
-        // TODO add your handling code here:
+         txtAreaResultados.setText("=== PROFESORES ORDENADOS POR SALARIO ===\n");
+
+    for (Profesor p : controlador.obtenerProfesoresOrdenados()) {
+        txtAreaResultados.append(p.toString() + "\n");
+    }
     }//GEN-LAST:event_btnListarProfesoresActionPerformed
 
     private void btnTotalPrestacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTotalPrestacionesActionPerformed
