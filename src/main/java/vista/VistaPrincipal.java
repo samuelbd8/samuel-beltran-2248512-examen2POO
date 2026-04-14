@@ -477,7 +477,35 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDireccionEstudianteActionPerformed
 
     private void btnRegistrarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProfesorActionPerformed
-        try {
+        
+        
+    if (txtNombreProfesor.getText().isEmpty() ||
+        txtDireccionProfesor.getText().isEmpty() ||
+        txtTelefonoProfesor.getText().isEmpty() ||
+        txtFechaProfesor.getText().isEmpty() ||
+        txtCedula.getText().isEmpty() ||
+        txtArea.getText().isEmpty() ||
+        txtSalarioHora.getText().isEmpty() ||
+        txtHorasMes.getText().isEmpty()) {
+
+        txtAreaResultados.append("Error: Todos los campos son obligatorios.\n");
+        return;
+    }
+
+    if (!txtCedula.getText().matches("\\d+")) {
+        txtAreaResultados.append("Error: La cédula solo debe contener números.\n");
+        return;
+    }
+
+    try {
+        double salario = Double.parseDouble(txtSalarioHora.getText());
+        int horas = Integer.parseInt(txtHorasMes.getText());
+
+        if (salario <= 0 || horas <= 0) {
+            txtAreaResultados.append("Error: salario y horas deben ser mayores a 0.\n");
+            return;
+        }
+
         controlador.registrarProfesor(
                 txtNombreProfesor.getText(),
                 txtDireccionProfesor.getText(),
@@ -485,26 +513,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 txtFechaProfesor.getText(),
                 txtCedula.getText(),
                 txtArea.getText(),
-                Double.parseDouble(txtSalarioHora.getText()),
-                Integer.parseInt(txtHorasMes.getText())
+                salario,
+                horas
         );
 
         txtAreaResultados.append("Profesor registrado correctamente.\n");
 
-        
-        txtNombreProfesor.setText("");
-        txtDireccionProfesor.setText("");
-        txtTelefonoProfesor.setText("");
-        txtFechaProfesor.setText("");
-        txtCedula.setText("");
-        txtArea.setText("");
-        txtSalarioHora.setText("");
-        txtHorasMes.setText("");
-
     } catch (NumberFormatException e) {
-        txtAreaResultados.append("Error: salario y horas deben ser numeros validos.\n");
+        txtAreaResultados.append("Error: salario y horas deben ser números válidos.\n");
     }
-
     }//GEN-LAST:event_btnRegistrarProfesorActionPerformed
 
     private void txtNombreProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProfesorActionPerformed
@@ -548,30 +565,52 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGradoActionPerformed
 
     private void btnRegistrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEstudianteActionPerformed
-        try {
-        controlador.registrarEstudiante(
-                txtNombreEstudiante.getText(),
-                txtDireccionEstudiante.getText(),
-                txtTelefonoEstudiante.getText(),
-                txtFechaEstudiante.getText(),
-                txtCodigo.getText(),
-                txtGrado.getText(),
-                Double.parseDouble(txtPromedio.getText())
-        );
+           
+    if (txtNombreEstudiante.getText().isEmpty() ||
+        txtDireccionEstudiante.getText().isEmpty() ||
+        txtTelefonoEstudiante.getText().isEmpty() ||
+        txtFechaEstudiante.getText().isEmpty() ||
+        txtCodigo.getText().isEmpty() ||
+        txtGrado.getText().isEmpty() ||
+        txtPromedio.getText().isEmpty()) {
 
-        txtAreaResultados.append("Estudiante registrado correctamente.\n");
-
-        txtNombreEstudiante.setText("");
-        txtDireccionEstudiante.setText("");
-        txtTelefonoEstudiante.setText("");
-        txtFechaEstudiante.setText("");
-        txtCodigo.setText("");
-        txtGrado.setText("");
-        txtPromedio.setText("");
-
-    } catch (NumberFormatException e) {
-        txtAreaResultados.append("Error: el promedio debe ser un numero valido.\n");
+        txtAreaResultados.append("Error: Todos los campos son obligatorios.\n");
+        return;
     }
+
+    
+    if (!txtCodigo.getText().matches("\\d+")) {
+        txtAreaResultados.append("Error: el código del estudiante debe ser numérico.\n");
+        return;
+    }
+
+    double promedio;
+
+    try {
+        promedio = Double.parseDouble(txtPromedio.getText());
+    } catch (NumberFormatException e) {
+        txtAreaResultados.append("Error: el promedio debe ser numérico.\n");
+        return;
+    }
+
+    
+    if (promedio < 0 || promedio > 5) {
+        txtAreaResultados.append("Error: el promedio debe estar entre 0 y 5.\n");
+        return;
+    }
+
+    controlador.registrarEstudiante(
+            txtNombreEstudiante.getText(),
+            txtDireccionEstudiante.getText(),
+            txtTelefonoEstudiante.getText(),
+            txtFechaEstudiante.getText(),
+            txtCodigo.getText(),
+            txtGrado.getText(),
+            promedio
+    );
+
+    txtAreaResultados.append("Estudiante registrado correctamente.\n");
+
     }//GEN-LAST:event_btnRegistrarEstudianteActionPerformed
 
     private void btnListarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEstudiantesActionPerformed

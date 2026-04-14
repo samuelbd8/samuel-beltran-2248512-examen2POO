@@ -34,4 +34,4 @@ public class ProfesorTest {
         Profesor p = new Profesor("Juan", "", "", "", "123", "Matematicas", 10000, 100);
         assertEquals(247000, p.calcularPrestaciones(), 0.01);
     }
-}
+}    
