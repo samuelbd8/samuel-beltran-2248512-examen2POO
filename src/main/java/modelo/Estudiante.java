@@ -14,13 +14,7 @@ public class Estudiante extends Persona {
     private String grado;
     private double promedio;
 
-    public Estudiante(String nombre, String direccion, String telefono, String fechaNacimiento,
-                      String codigo, String grado, double promedio) {
-        super(nombre, direccion, telefono, fechaNacimiento);
-        this.codigo = codigo;
-        this.grado = grado;
-        this.promedio = promedio;
-    }
+    
 
    
     public String getCodigo() { return codigo; }

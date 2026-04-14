@@ -44,15 +44,23 @@ public class Controlador {
     
 
     public void registrarEstudiante(String nombre, String direccion, String telefono,
-                                     String fechaNacimiento, String codigo,
-                                     String grado, double promedio) {
+                                 String fechaNacimiento, String codigo,
+                                 String grado, double promedio) {
 
-        Estudiante e = new Estudiante(nombre, direccion, telefono, fechaNacimiento,
-                                       codigo, grado, promedio);
-        colegio.agregarEstudiante(e);
-    }
+    Estudiante e = new Estudiante();
+
+    e.setNombre(nombre);
+    e.setDireccion(direccion);
+    e.setTelefono(telefono);
+    e.setFechaNacimiento(fechaNacimiento);
+    e.setCodigo(codigo);
+    e.setGrado(grado);
+    e.setPromedio(promedio);
+
+    colegio.agregarEstudiante(e);
+}
 
     public ArrayList<Estudiante> obtenerEstudiantes() {
         return colegio.listarEstudiantes();
     }
-}
+}   
